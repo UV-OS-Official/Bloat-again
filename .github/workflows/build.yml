@@ -1,4 +1,4 @@
-name: Build C# EXE
+name: Build Windows EXE
 
 on:
   push:
@@ -18,10 +18,10 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Build EXE
-        run: dotnet publish TrentonMessage/TrentonMessage.csproj -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true /p:IncludeAllContentForSelfExtract=true
+        run: dotnet publish sys.csproj -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true /p:IncludeAllContentForSelfExtract=true
 
       - name: Upload EXE
         uses: actions/upload-artifact@v3
         with:
           name: TrentonMessage
-          path: TrentonMessage/bin/Release/net8.0-windows/win-x64/publish/TrentonMessage.exe
+          path: sys/bin/Release/net8.0-windows/win-x64/publish/sys.exe
