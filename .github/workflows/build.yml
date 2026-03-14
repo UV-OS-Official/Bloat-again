@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v3
@@ -18,10 +18,10 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Build EXE
-        run: dotnet publish sys.csproj -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true /p:IncludeAllContentForSelfExtract=true
+        run: dotnet publish sys.csproj -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true
 
       - name: Upload EXE
         uses: actions/upload-artifact@v4
         with:
           name: TrentonMessage
-          path: sys/bin/Release/net8.0-windows/win-x64/publish/sys.exe
+          path: sys/bin/Release/net8.0-windows/win-x64/publish/*.exe
